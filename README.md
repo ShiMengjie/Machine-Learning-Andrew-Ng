@@ -1,7 +1,7 @@
 # Coursera Machine Learning Assignments in Matlab
 [![Author](https://img.shields.io/badge/author-SHIMengjie-red.svg)](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab) [![Matlab](https://img.shields.io/badge/Matlab-2017b-green.svg)]() [![License](https://img.shields.io/github/license/mashape/apistatus.svg)]() [![contribution](https://img.shields.io/badge/contribution-welcome-brightgreen.svg)]()
 
-![title-image](title_image.png)
+![title-image](title_image.gif)
 
 ## Introduction
 These are the programming assignments from Coursera's Machine Learning course [CS229](http://cs229.stanford.edu/) taught by Andrew Ng.
@@ -34,7 +34,7 @@ You can get the installation package source from its offical website [Matlab](ht
 #### [Exercise 2](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-2)
 * Logistic Regression
 * Logistic Regression with Regularization
-#### [Exercise 3](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex3)
+#### [Exercise 3](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-3)
 * Multiclass Classification
 * Neural Networks Prediction fuction
 #### [Exercise 4](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex4)
