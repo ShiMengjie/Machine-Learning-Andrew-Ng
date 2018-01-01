@@ -11,8 +11,8 @@ if size(X, 2) <= 3
     plot_x = [min(X(:,2)),  max(X(:,2))];
     %计算对应的X(:,3)，原代码使用的是下面
     % plot_y = (-1./theta(3)).*(theta(2).*plot_x + theta(1));
-    %但是实际上应该用有0.5的增量，因为sigmod函数的判别线是0.5
-    plot_y = ( 0.5-1./theta(3)).*(theta(2).*plot_x + theta(1));
+    %sigmod函数的判别线是0.5，对应的theta*X值为0，所以用0减去
+    plot_y = ( 0-1./theta(3)).*(theta(2).*plot_x + theta(1));
     plot(plot_x, plot_y)
 else
     % 数据维度大于3维，绘制等高线
