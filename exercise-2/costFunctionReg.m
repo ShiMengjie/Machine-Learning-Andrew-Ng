@@ -1,6 +1,6 @@
 function [J, grad] = costFunctionReg(theta, X, Y, lambda)
-%% ¼ÆËã¾ßÓĞÕıÔòÏîµÄ´ú¼Ûº¯ÊıºÍÌİ¶ÈÖµ£¬ÆäÖĞ£º
-%  lambdaÊÇÕıÔòÏîµÄÏµÊı
+%% è®¡ç®—å…·æœ‰æ­£åˆ™é¡¹çš„ä»£ä»·å‡½æ•°å’Œæ¢¯åº¦å€¼ï¼Œå…¶ä¸­ï¼š
+%  lambdaæ˜¯æ­£åˆ™é¡¹çš„ç³»æ•°
 [m,n]=size(X);
 [cost1,grad1] = costFunction(theta,X,Y);
 J= cost1  + lambda/(2*m) * (theta.'*theta);
@@ -10,4 +10,5 @@ grad(1) = grad1(1);
 grad(2:n) = grad1(2:n).' + lambda/m.*theta(2:n);
 
 end
+
 
