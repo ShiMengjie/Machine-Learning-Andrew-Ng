@@ -37,7 +37,7 @@ You can get the installation package source from its offical website [Matlab](ht
 #### [Exercise 3](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-3)
 * Multiclass Classification
 * Neural Networks Prediction fuction
-#### [Exercise 4](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex4)
+#### [Exercise 4](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-4)
 * Neural Networks Learning
 #### [Exercise 5](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex5)
 * Regularized Linear Regression
