@@ -8,7 +8,7 @@ These are the programming assignments from Coursera's Machine Learning course [C
 
 * "A computer program is said to learn from experience E with respect to some task 
 T and some performance measure P, if its performance on T, as measured by P, improves with experience E." 
---------------Definition of Machine Learning by Tom Mitchell
+-------------- Definition of Machine Learning by Tom Mitchell
 ### Attention：
 You can get the videos form [here](http://open.163.com/special/opencourse/machinelearning.html).
 
@@ -19,14 +19,6 @@ This project is coded in Matlab 2017b.
 You can get the installation package source from its offical website [Matlab](https://cn.mathworks.com/products/matlab.html).
 
 ## Contents
-- <b>SupervisedLearning</b> 
-  + linearRegression
-  + logisticRegression
-- <b>UnsupervisedLearning</b> 
-  + neuralNetworks
-    - digitRecognition
-    - learningWithBackpropagation
-
 - README.md = the file you are reading right now
 #### [Exercise 1](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-1)
 * Linear Regression
@@ -39,7 +31,7 @@ You can get the installation package source from its offical website [Matlab](ht
 * Neural Networks Prediction fuction
 #### [Exercise 4](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-4)
 * Neural Networks Learning
-#### [Exercise 5](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex5)
+#### [Exercise 5](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-5)
 * Regularized Linear Regression
 * Bias vs. Variance
 #### [Exercise 6](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex6)
