@@ -1,5 +1,5 @@
 function y = sigmoid(x )
-%% º¯ÊýËµÃ÷£ºÉú³Ésigmodº¯Êý±í´ïÊ½
+%% å‡½æ•°è¯´æ˜Žï¼šç”Ÿæˆsigmodå‡½æ•°è¡¨è¾¾å¼
 y=1.0 ./ (1.0 + exp(-x));
 
 end
