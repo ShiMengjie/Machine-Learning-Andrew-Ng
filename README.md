@@ -34,7 +34,7 @@ You can get the installation package source from its offical website [Matlab](ht
 #### [Exercise 5](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-5)
 * Regularized Linear Regression
 * Bias vs. Variance
-#### [Exercise 6](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex6)
+#### [Exercise 6](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-6)
 * Support Vector Machines
 * Spam email Classifier
 #### [Exercise 7](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex7)
@@ -43,6 +43,8 @@ You can get the installation package source from its offical website [Matlab](ht
 #### [Exercise 8](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex8)
 * Anomaly Detection
 * Recommender Systems
+### [gaussianDemo](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/gaussianDemo)
+* Simple Gaussian Process Regression
 
 ## Solutions
 <b>LIKE KINDA SUPER IMPORTANT NOTE</b>:

@@ -13,13 +13,13 @@ ylabel('Feature 2');
 title('ex6data1','FontWeight','bold');
 
 %% 2.训练SVM--线性可分的data1
-C1 =1;
-maxIter =20;
-model_1 = svmTrain(X,y,C1,@linearKernel,1e-3,maxIter);
-visualizeBoundaryLinear(X, model_1);
+C=1;
+maxIter=20;
+model_1 = svmTrain(X,y,C,@linearKernel,1e-3,maxIter);
+visualizeBoundaryLinear(X, model);
 hold on;
-C2 =100;
-model_2 = svmTrain(X,y,C2,@linearKernel,1e-3,maxIter);
+C =100;
+model_2 = svmTrain(X,y,C,@linearKernel,1e-3,maxIter);
 visualizeBoundaryLinear(X, model_2);
 legend({'label=1','label=-1','C=1','C=100'},'FontWeight','bold');
 hold off
@@ -48,6 +48,7 @@ modelg1 = svmTrain(X,y,C1,@(x1,x2) gaussianKernel(x1,x2,sigma),1e-3);%没有设�
 [xplot,yplot,vals]=visualizeBoundary(X, modelg1);
 contour(xplot,yplot,vals,[0 1],'b-','LineWidth',2);
 hold on
+
 C1=100;
 sigma =0.1;
 modelg2 = svmTrain(X,y,C1,@(x1,x2) gaussianKernel(x1,x2,sigma),1e-3);
@@ -73,3 +74,4 @@ model = svmTrain(X,y,C,@(x1,x2) gaussianKernel(x1,x2,sigma));
 [xplot,yplot,vals]=visualizeBoundary(X, model);
 contour(xplot,yplot,vals,[0 1],'b-','LineWidth',2);
 legend({'label=1','label=-1','boundary'},'FontWeight','bold');
+%}

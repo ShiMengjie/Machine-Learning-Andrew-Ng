@@ -6,7 +6,7 @@ function [model] = svmTrain(X, Y, C, func, ...
 % 或论文：
 % Sequential Minimal Optimization: A Fast Algorithm for Training Support Vector Machines
 % X 是数据矩阵，X(i,j)表示di个样本的第j维特征
-% Y 是X对应的列向量kabel，此时y={0,1}
+% Y 是X对应的列向量label，此时y={0,1}
 % C 是SVM的正则化参数
 % tol 参数满足KKT条件的误差
 % maxIter 最大迭代运算次数
@@ -26,7 +26,6 @@ alphas = zeros(m, 1); % 拉格朗日乘子
 b = 0; % 偏置
 passes = 0; % 迭代次数
 E = zeros(m, 1); % 误差矩阵，E(i)表示第i个向量作为测试/训练数据时的误差
-
 %% 生成核函数矩阵
 K = func(X,X);
 
