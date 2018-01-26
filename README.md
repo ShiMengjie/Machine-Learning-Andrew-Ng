@@ -37,7 +37,7 @@ You can get the installation package source from its offical website [Matlab](ht
 #### [Exercise 6](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-6)
 * Support Vector Machines
 * Spam email Classifier
-#### [Exercise 7](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex7)
+#### [Exercise 7](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-7)
 * K-means Clustering
 * Principal Component Analysis
 #### [Exercise 8](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex8)
