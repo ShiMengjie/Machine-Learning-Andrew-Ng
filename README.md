@@ -41,7 +41,7 @@ You can get the installation package source from its offical website [Matlab](ht
 #### [Exercise 7](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-7)
 * K-means Clustering
 * Principal Component Analysis
-#### [Exercise 8](https://github.com/nsoojin/coursera-ml-py/tree/master/machine-learning-ex8)
+#### [Exercise 8](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/exercise-8)
 * Anomaly Detection
 * Recommender Systems
 ### [gaussianDemo](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/gaussianDemo)
