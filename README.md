@@ -7,8 +7,9 @@
 These codes are the programming assignments from Coursera's [Machine Learning](https://www.coursera.org/learn/machine-learning) course  taught by Andrew Ng.
 You also can watch the Stanford course [CS229](http://open.163.com/special/opencourse/machinelearning.html).
 ### Attention：
-You can download the videos form [Baidu](https://pan.baidu.com/s/1qZlQFoS).
-
+* You can download the videos form [Baidu](https://pan.baidu.com/s/1qZlQFoS).
+* If you need the assignments in <b>Python</b>, you can go to my <b>[repository](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Python)</b> to get codes.
+### Definition
 * "A computer program is said to learn from experience E with respect to some task 
 T and some performance measure P, if its performance on T, as measured by P, improves with experience E." 
 -------------- Definition of Machine Learning by Tom Mitchell
