@@ -4,13 +4,14 @@
 ![title-image](title_image.gif)
 
 ## Introduction
-These are the programming assignments from Coursera's Machine Learning course [CS229](http://cs229.stanford.edu/) taught by Andrew Ng.
+These codes are the programming assignments from Coursera's [Machine Learning](https://www.coursera.org/learn/machine-learning) course  taught by Andrew Ng.
+You also can watch the Stanford course [CS229](http://open.163.com/special/opencourse/machinelearning.html).
+### Attention：
+You can download the videos form [Baidu](https://pan.baidu.com/s/1qZlQFoS).
 
 * "A computer program is said to learn from experience E with respect to some task 
 T and some performance measure P, if its performance on T, as measured by P, improves with experience E." 
 -------------- Definition of Machine Learning by Tom Mitchell
-### Attention：
-You can get the videos form [here](http://open.163.com/special/opencourse/machinelearning.html).
 
 ## How to start
 ### Dependencies
@@ -46,7 +47,7 @@ You can get the installation package source from its offical website [Matlab](ht
 ### [gaussianDemo](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab/tree/master/gaussianDemo)
 * Simple Gaussian Process Regression
 
-## Solutions
+## Acknowledge
 <b>LIKE KINDA SUPER IMPORTANT NOTE</b>:
 
-You can check and modify my implementation of the assignments [here](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab). All changes and discussions are welcome.
+You can check and modify my implementation of the assignments on [github](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab). All changes and discussions are welcome.
