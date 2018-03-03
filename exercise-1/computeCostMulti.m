@@ -1,10 +1,7 @@
 function J = computeCostMulti( X,Y,theta )
-%%
-%  X：增加了一个维度后的输入特征
-%  T：X对应的输出值
-%  theta：每次带入的参数
+%% 函数功能：计算多维数据的代价
 [m,~] = size(X);
 hypthesis = X * theta;
 err = hypthesis - Y;
-J = (err.'*err)/(2*m);
+J = (err.'*err) / (2*m);
 end
