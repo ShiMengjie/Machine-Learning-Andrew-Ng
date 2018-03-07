@@ -1,5 +1,6 @@
 %% Machine Learning Online Class - Exercise 1: Linear Regression with UniVariable
 close all;clc
+
 %% 1.读入数据并绘制图像
 fprintf('Loading and plot data......\n');
 %读入数据

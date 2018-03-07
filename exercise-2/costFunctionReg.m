@@ -1,14 +1,13 @@
 function [J, grad] = costFunctionReg(theta, X, Y, lambda)
-%% è®¡ç®—å…·æœ‰æ­£åˆ™é¡¹çš„ä»£ä»·å‡½æ•°å’Œæ¢¯åº¦å€¼ï¼Œå…¶ä¸­ï¼š
-%  lambdaæ˜¯æ­£åˆ™é¡¹çš„ç³»æ•°
+%% º¯Êı¹¦ÄÜ£º¼ÆËã¾ßÓĞÕıÔòÏîµÄ´ú¼Ûº¯ÊıºÍÌİ¶ÈÖµ£¬Ö»ÊÊÓÃÓÚLogistic Regrssion
+%  lambda ÊÇÕıÔòÏîµÄÏµÊı
 [m,n]=size(X);
 [cost1,grad1] = costFunction(theta,X,Y);
-J= cost1  + lambda/(2*m) * (theta.'*theta);
+% ÓÃthetaµÄ2½×Ä£×÷ÎªÕıÔòÏî
+J = cost1  + lambda/(2*m) * (theta.' * theta);
 
 grad = zeros(n,1);
 grad(1) = grad1(1);
-grad(2:n) = grad1(2:n).' + lambda/m.*theta(2:n);
+grad(2:n) = grad1(2:n).' + lambda / m .* theta(2:n);
 
 end
-
-

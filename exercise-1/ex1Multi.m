@@ -7,6 +7,8 @@ X = dataSet(:,1:2);
 Y = dataSet(:,3);
 % 进行特征归一化
 [X_norm,mu,sigma] = featureNormalize(X);
+% fprintf('mu is %f\n',mu);
+fprintf('sigma is %f\n',sigma);
 % 添加偏置
 X = [ones(size(X_norm,1),1) , X_norm];
 

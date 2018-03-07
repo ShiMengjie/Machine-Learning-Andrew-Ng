@@ -1,5 +1,6 @@
 function out = mapFeature( X1,X2,power )
-%% 把特征X1、X2映射成高次的多项式形式，增加数据的维度，power是映射到的多项式的最高次数，项数从0次到power次
+%% 函数功能：把特征X1、X2映射成高阶维度的多项式，增加数据的维度
+% power是映射到的多项式的最高次数，项数从0次到power次
 [m,~]=size(X1);
 n=(1+power+1)*(power+1)/2;
 out = ones(m,n);
@@ -10,7 +11,4 @@ for i =1:power
         k=k+1;
     end
 end
-
-
-
 end
