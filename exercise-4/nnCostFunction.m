@@ -3,46 +3,48 @@ function  [J,grad] = nnCostFunction(X,y,nn_parameter, ...
                                                  hidden_layer_size, ...
                                                  label_num, ...
                                                  lambda)
-%% å‡½æ•°åŠŸèƒ½ï¼šæ ¹æ®è¾“å…¥çš„æ•°æ®å’Œå¯¹åº”çš„è¾“å‡ºï¼Œä»¥åŠç¥ç»ç½‘ç»œç›¸åº”çš„å‚æ•°ï¼Œè®¡ç®—ä»£ä»·å‡½æ•°
+%% º¯Êı¹¦ÄÜ£º¸ù¾İÊäÈëµÄÊı¾İºÍ¶ÔÓ¦µÄÊä³ö£¬ÒÔ¼°Éñ¾­ÍøÂçÏàÓ¦µÄ²ÎÊı£¬¼ÆËã´ú¼Ûº¯Êı
 if nargin == 6
-    %åªæœ‰6ä¸ªå‚æ•°çš„æ—¶å€™ï¼Œè¡¨ç¤ºæ²¡æœ‰æ­£åˆ™é¡¹ï¼ŒæŠŠç³»æ•°lambdaè®¾ç½®ä¸º0
+    %Ö»ÓĞ6¸ö²ÎÊıµÄÊ±ºò£¬±íÊ¾Ã»ÓĞÕıÔòÏî£¬°ÑÏµÊılambdaÉèÖÃÎª0
     lambda =0;
 end
-%% ç¬¬ä¸€éƒ¨åˆ†ï¼Œè®¡ç®—ä»£ä»·å‡½æ•°
+
+%% µÚÒ»²¿·Ö£¬¼ÆËãÊä³ö
+% ÖØÅÄ²ÎÊı
 theta1 = reshape(nn_parameter(1:hidden_layer_size * (input_layer_size + 1 )),hidden_layer_size,input_layer_size+1); 
 theta2 = reshape(nn_parameter(hidden_layer_size * (input_layer_size + 1 )+1:end),label_num,hidden_layer_size+1);
-
 [m,~] = size(X);
 X = [ones(m,1),X];
-% ç¬¬ä¸€å±‚è¾“å‡º
-a1 = X;
-% ç¬¬äºŒå±‚è¾“å…¥å’Œè¾“å‡º
+
+% ÊäÈë²ãµÄÊä³öµÈÓÚÊäÈë
+a1 = X;     
+% µÚ¶ş²ãÊäÈëºÍÊä³ö
 z2 = a1 * theta1.' ;
 a2 = sigmoid(z2);
 a2 = [ones(size(a2,1),1) , a2];
-% ç¬¬ä¸‰å±‚è¾“å…¥å’Œè¾“å‡º
+% µÚÈı²ãÊäÈëºÍÊä³ö
 z3 = a2 * theta2.';
 a3 = sigmoid(z3);
-% è½¬æ¢è¾“å‡ºå‘é‡
-yk = zeros(length(y),label_num);
-for i =1:size(a3,1)
+% ´ËÊ±a3ÊÇÒ»¸öm*KµÄÊı×é£¬a3(m,K)µÄÖµÊÇµÚm¸öÑù±¾ÊôÓÚµÚK¸ö±êÇ©µÄÔ¤²âÊä³ö
+% ¸ù¾İÒÑÓĞµÄÕæÖµy£¬×ª»»³ÉÓëa3¸ñÊ½ÏàÍ¬µÄÊı×é£¬Èç¹ûyk(m,k)==1£¬±íÊ¾µÚm¸öÑù±¾µÄÕæÊµ±êÇ©ÊÇK
+yk = zeros(length(y) , label_num);
+for i =1:m
     yk(i,y(i)) =1;
 end
-
+% ¼ÆËã´ú¼Û£¬ÕıÔòÏîÖĞ£¬Ã»ÓĞ´øÈëtheta1ºÍtheta2µÄÆ«ÖÃ²¿·Ö
 logisf = (-yk) .* log(a3) - (1- yk) .* log(1 - a3);
-% æ­£åˆ™é¡¹ä¸­ï¼Œæ²¡æœ‰å¸¦å…¥theta1å’Œtheta2çš„åç½®éƒ¨åˆ†
 J = (1/m) * sum(sum(logisf)) + (lambda) * ( sum(sum(theta1(:,2:end) .^ 2 )) + sum(sum(theta2(:,2:end) .^2)) ) /(2*m);
 
-%% ç¬¬äºŒéƒ¨åˆ†ï¼ŒBPç®—æ³•ï¼ŒæŒ‰ç…§æ–‡æ¡£ä¸Šçš„å†™æ³•ï¼Œä½†æ˜¯å’Œæˆ‘æ‰€çŸ¥çš„BPç®—æ³•æœ‰äº›ä¸ä¸€æ ·
+%% µÚ¶ş²¿·Ö£¬BPËã·¨--Õâ¸öBPÖ»ÊÊÓÃÓÚÕâ¸ö°¸ÀıÖĞ£¬¶ÔÓÚ¸ü¸ß²ãÊı¸ü¶à£¬¸ü¸´ÔÓµÄÄ£ĞÍ¾Í²»ÊÊÓÃÁË
 delta3 = a3 - yk;
 
-delta2 = delta3 * theta2 .* sigmoidGradient([ones(size(z2,1),1),z2]);
+delta2 = delta3 * theta2 .* sigmoidGradient( [ones(size(z2,1), 1), z2] );
 delta2 = delta2(:,2:end);
-% theta1çš„æ¢¯åº¦
+% theta1µÄÌİ¶È
 tridelta_1 = 0;
 tridelta_1 = tridelta_1 + delta2.' * a1;
 nn_parameter1_grad = (1/m) .* tridelta_1 + (lambda/m) *[zeros(size(theta1,1),1),theta1(:,2:end)]  ;
-% theta2çš„æ¢¯åº¦
+% theta2µÄÌİ¶È
 tridelta_2 = 0;
 tridelta_2 = tridelta_2 + delta3.' * a2;
 nn_parameter2_grad = (1/m) .* tridelta_2 +(lambda/m) * [zeros(size(theta2,1),1),theta2(:,2:end)] ;

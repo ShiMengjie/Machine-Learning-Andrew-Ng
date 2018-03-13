@@ -1,55 +1,54 @@
 function [figurePane , display_array] = displayData(X,image_width)
-%% å‡½æ•°è¯´æ˜ï¼šæŠŠè¾“å…¥çš„å›¾åƒæ•°æ®è¿›è¡Œé‡æ–°æ’åˆ—ï¼Œæ˜¾ç¤ºåœ¨ä¸€ä¸ªé¢æ¿figurePaneä¸­ï¼Œé¢æ¿ä¸­æœ‰å¤šä¸ªå°imgeç”¨æ¥æ˜¾ç¤ºæ¯ä¸€è¡Œæ•°æ®
-% image_widthï¼šæ¯ä¸€ä¸ªå°imgaeçš„å®½åº¦
-%è·å–Xçš„å…·ä½“å°ºå¯¸
+%% º¯ÊıËµÃ÷£º°ÑÊäÈëµÄÍ¼ÏñÊı¾İX½øĞĞÖØĞÂÅÅÁĞ£¬ÏÔÊ¾ÔÚÒ»¸öÃæ°åfigurePaneÖĞ£¬Ãæ°åÖĞÓĞ¶à¸öĞ¡imgeÓÃÀ´ÏÔÊ¾Ã¿Ò»ĞĞÊı¾İ
+% image_width£ºÃ¿Ò»¸öĞ¡imgaeµÄ¿í¶È
+% »ñÈ¡XµÄ¾ßÌå³ß´ç
 [m,n] =size(X);
-%% è®¾ç½®æ¯ä¸€ä¸ªimageçš„å°ºå¯¸
-%å¦‚æœæ²¡æœ‰è®¾ç½®image_widthï¼Œå°±é»˜è®¤ä¸ºæ˜¯Xåˆ—æ•°çš„å¼€æ–¹ï¼Œå¹¶å››èˆäº”å…¥
+
+%% ÉèÖÃÃ¿Ò»¸öimageµÄ³ß´ç
+% Èç¹ûÃ»ÓĞÉèÖÃimage_width£¬¾ÍÄ¬ÈÏÎªÊÇÊı¾İÎ¬¶ÈµÄ¿ªÆ½·½£¬²¢ËÄÉáÎåÈë
 if ~exist('image_width','var') || isempty(image_width)
-    image_width = round(sqrt(size(X,2)));
+    image_width = round(sqrt(n));
 end
-%æ¯ä¸€ä¸ªimageçš„é«˜åº¦
+% Ã¿Ò»¸öimageµÄ¸ß¶È
 image_height = n / image_width;
 
-%% è®¾ç½®figurePaneï¼ˆfigureï¼‰çš„å‚æ•°
-%è®¾ç½®é¢æ¿figurePaneå›¾ç‰‡çš„è‰²å½©ä¸ºç°åº¦å›¾
+%% ÉèÖÃfigurePane£¨figure£©µÄ²ÎÊı
+% ÉèÖÃÃæ°åfigurePaneÍ¼Æ¬µÄÉ«²ÊÎª»Ò¶ÈÍ¼
 colormap(gray);
-%è®¾ç½®é¢æ¿figurePaneä¸­imageçš„è¡Œæ•°å’Œåˆ—æ•°
-%floor ---- å‘è´Ÿæ— ç©·å–æ•´ï¼›ceil ---- å‘æ­£æ— ç©·å–æ•´
-figure_rows = floor(sqrt(m));
-figure_cols = ceil(m / figure_rows);
+% ÉèÖÃÃæ°åfigurePaneÖĞimageµÄĞĞÊıºÍÁĞÊı
+figure_rows = floor(sqrt(m));   % floor ---- Ïò¸ºÎŞÇîÈ¡Õû£¬È¡Ğ¡ÓÚµÈÓÚËüµÄ×î´óÕûÊı
+figure_cols = ceil(m / figure_rows);    % ceil ---- ÏòÕıÎŞÇîÈ¡Õû£¬È¡´óÓÚµÈÓÚËüµÄ×îĞ¡ÕûÊı
 
-%% è®¾ç½®é¢æ¿figurePaneå¯¹åº”çš„æ•°ç»„ï¼Œç”¨æ¥ä¿å­˜Xä¸­çš„è±¡ç´ å€¼
-%æ¯ä¸€ä¸ªimageä¹‹é—´çš„é—´è·
+%% ÉèÖÃÃæ°åfigurePane¶ÔÓ¦µÄÊı×é£¬ÓÃÀ´±£´æXÖĞµÄÏóËØÖµ
+% Ã¿Ò»¸öimageÖ®¼äµÄ¼ä¾à
 pad = 1;
-%åˆå§‹å€¼éƒ½æ˜¯-1ï¼Œæ˜¾ç¤ºä¸ºé»‘è‰²
-display_array = -ones(pad+(image_width+pad)*figure_rows, ...
-                                     pad+(image_height +pad)*figure_cols);
+% ³õÊ¼Öµ¶¼ÊÇ-1£¬ÏÔÊ¾ÎªºÚÉ«
+display_array = -ones( pad + (image_width+pad) * figure_rows, ...
+                                     pad+(image_height +pad) * figure_cols );
                                  
-%% æŠŠXä¸­çš„æ¯ä¸€ä¸ªè±¡ç´ å€¼ï¼Œå¤åˆ¶è¿›display_arrayçš„å¯¹åº”ä½ç½®
-%å½“å‰æ˜¾ç¤ºçš„ç¬¬å‡ ä¸ªimageï¼Œå€¼è¦å°äºm
+%% °ÑXÖĞµÄÃ¿Ò»¸öÏóËØÖµ£¬¸´ÖÆ½ødisplay_arrayµÄ¶ÔÓ¦Î»ÖÃ
 current_image=1;
 for row =1 : figure_rows
     for col =1:figure_cols
-        %åˆ¤æ–­current_imageçš„å¤§å°
+        % ÅĞ¶Ïcurrent_imageµÄ´óĞ¡£¬´óÓÚm¾Í±íÃ÷±éÀú½áÊøÁË
         if current_image > m
             break;
         end
-        %æ‰¾åˆ°æœ€å¤§å€¼ï¼Œç”¨æ¥æŠŠæ•°æ®å½’ä¸€åŒ–åˆ°[-1,1]ä¹‹é—´
-        max_val = max(max(X(current_image,:)));
-        %æŒ‰ç…§æ•°æ®å—è¿›è¡Œé‡æ–°æ”¾ç½®æ•°æ®ï¼Œä½¿ç”¨ reshapeå‡½æ•°è¿›è¡Œä½ç½®é‡æ’
-        %ä¸€ä¸ªå›¾åƒæ•°æ®åœ¨é‡æ’æˆä¸€è¡Œçš„æ—¶å€™ï¼Œä¹Ÿæ˜¯ç”¨reshapeæ–¹æ³•è¿›è¡Œçš„ï¼Œå†ä½¿ç”¨reshapeæ–¹æ³•æ¥æ¢å¤
-        display_array(pad + (row-1)*(image_height+pad)+(1:image_height),pad + (col-1)*(image_width+pad)+(1:image_width))=...
-            reshape(X(current_image,:),image_height,image_width)/max_val;
+        % ÕÒµ½Ã¿Ò»ĞĞµÄ×î´óÖµ£¬ÓÃÀ´°ÑÕâÒ»ĞĞµÄÊı¾İ¹éÒ»»¯µ½[-1,1]Ö®¼ä
+        max_val = max( max( X(current_image,:) ) );
+        % °´ÕÕÊı¾İ¿é½øĞĞÖØĞÂ·ÅÖÃÊı¾İ£¬Ê¹ÓÃ reshapeº¯Êı½øĞĞÎ»ÖÃÖØÅÅ
+        % Ò»¸öÍ¼ÏñÊı¾İÔÚÖØÅÅ³ÉÒ»ĞĞµÄÊ±ºò£¬Ò²ÊÇÓÃreshape·½·¨½øĞĞµÄ£¬ÔÙÊ¹ÓÃreshape·½·¨À´»Ö¸´
+        display_array(pad + (row-1)*(image_height+pad)+(1:image_height) , pad + (col-1)*(image_width+pad)+(1:image_width))=...
+            reshape(X(current_image,:),image_height,image_width) / max_val;
        current_image=current_image+1;
     end
     if current_image > m
             break;
     end
 end
-%æ˜¾ç¤ºå›¾åƒï¼Œå¹¶ä¸”æŠŠè‰²å½©ï¼ˆè¿™é‡Œæ˜¯ç°åº¦ï¼‰èŒƒå›´è®¾ç½®ä¸º[-1,1]
+% ÏÔÊ¾Í¼Ïñ£¬²¢ÇÒ°ÑÉ«²Ê£¨ÕâÀïÊÇ»Ò¶È£©·¶Î§ÉèÖÃÎª[-1,1]
 figurePane = imagesc(display_array,[-1 1]);
-
+title('Random handwritten digits');
 axis image off
 drawnow;
 end
