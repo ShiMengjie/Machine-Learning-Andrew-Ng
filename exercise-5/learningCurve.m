@@ -1,12 +1,12 @@
 function [error_train,error_val]=learningCurve(X,y,Xval,yval,lambda)
-%% å‡½æ•°è¯´æ˜ï¼šåœ¨è®­ç»ƒé›†å’ŒéªŒè¯é›†ä¸Šæ±‚å‡ºè¯¯å·®erroréšç€è®­ç»ƒæ ·æœ¬æ•°ç›®å˜åŒ–çš„æ›²çº¿
+%% º¯Êı¹¦ÄÜ£º¼ÆËã²»Í¬ÑµÁ·Ñù±¾ÏÂµÄÓÅ»¯½á¹ûÔÚÑµÁ·¼¯ºÍÑéÖ¤¼¯ÉÏµÄÎó²îÇúÏß
 m = size(X,1);
 error_train = zeros(m,1);
 error_val = zeros(m,1);
-
+% Ã¿´Î´øÈë²»Í¬ÊıÄ¿µÄÑµÁ·Ñù±¾ÊıÁ¿£¬¼ÆËãÔÚËù´øÈëµÄÑµÁ·¼¯ÉÏµÄ´ú¼Û£¬ÒÔ¼°ÔÚÑéÖ¤¼¯ÉÏµÄ´ú¼Û
 for i = 1:m
     theta = trainLinearReg(X(1:i,:),y(1:i),lambda);
-    [error_train(i),~] = linearRegCostFunction(X(1:i,:),y(1:i),theta,lambda);
+    [error_train(i),~] = linearRegCostFunction(X(1:i , :),y(1:i),theta,lambda);
     [error_val(i),~] = linearRegCostFunction(Xval,yval,theta,lambda);
 end
 

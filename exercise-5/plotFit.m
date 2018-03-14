@@ -1,11 +1,12 @@
 function [x,y_poly]=plotFit(min_x,max_x,mu,sigma,theta,p)
-%% å‡½æ•°è¯´æ˜ï¼šä½¿ç”¨è®­ç»ƒå‡ºæ¥çš„thetaæ¥ç»˜åˆ¶æ‹Ÿåˆæ›²çº¿
-x = (min_x -15:0.05:max_x+25).';
-
+%% º¯Êı¹¦ÄÜ£ºÔÚ¶àÏîÊ½ÌØÕ÷ÖµµÄÇø¼äÉÏ£¬»æÖÆÕâ¸öÇø¼äÉÏ×ø±êÓëthetaµÄÏßĞÔ×éºÏÇúÏß
+% È·¶¨×ø±ê·¶Î§
+x = (min_x -15 : 0.05 : max_x+25).';
+% Í¶Ó°µ½ÓëÌØÕ÷Êı¾İÏàÍ¬µÄÏî´Î
 x_poly = polyFeatures(x,p);
 x_poly = bsxfun(@minus,x_poly,mu);
 x_poly = bsxfun(@rdivide,x_poly,sigma);
-
+% ¼ÆËãÇúÏßµÄÖµ
 x_poly = [ones(size(x_poly,1),1),x_poly];
 y_poly = x_poly * theta;
 

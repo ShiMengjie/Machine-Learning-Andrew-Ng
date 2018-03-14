@@ -1,6 +1,6 @@
 function [lambda_vec,error_train,error_val]= validationCurve(X,y,X_val,y_val)
-%% å‡½æ•°åŠŸèƒ½ï¼šé€‰æ‹©ä¸åŒlambdaå€¼ï¼Œæ±‚å‡ºåœ¨è®­ç»ƒé›†æ‰€æœ‰æ•°æ®å’ŒéªŒè¯é›†æ‰€æœ‰æ•°æ®ä¸Šçš„è¯¯å·®
-% lambdaåºåˆ—
+%% º¯Êı¹¦ÄÜ£ºÑ¡Ôñ²»Í¬lambdaÖµ£¬Çó³öÔÚÑµÁ·¼¯ËùÓĞÊı¾İºÍÑéÖ¤¼¯ËùÓĞÊı¾İÉÏµÄÎó²î
+% lambdaĞòÁĞ
 lambda_vec = [0 0.001 0.003 0.01 0.03 0.1 0.3 1 3 10]';
 error_train = zeros(length(lambda_vec),1);
 error_val = zeros(length(lambda_vec),1);

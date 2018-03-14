@@ -1,6 +1,7 @@
-function [X_poly]= polyFeatures(X,p)
-%% 鍑芥暟璇存槑锛氭妸X鐨勭壒寰佹槧灏勬垚澶氶」寮忕殑褰㈠紡
+function [X_poly] = polyFeatures(X,p)
+%% 函数功能：把输入的维度投影成高阶多项式
 X_poly=zeros(size(X,1),p);
 for i = 1:p
-    X_poly(:,i) = X.^i;
+    X_poly(:,i) = X .^ i;
+end
 end

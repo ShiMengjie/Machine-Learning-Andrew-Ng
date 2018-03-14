@@ -1,5 +1,5 @@
 function [X_norm,mu,sigma] = featureNormalize(X)
-%% 鍑芥暟璇存槑锛氭爣鍑嗗寲鐗瑰緛鏁版嵁鏁版嵁
+%% 函数功能：把特征标准化，下面是标准化的标准流程
 mu = mean(X);
 
 X_norm = bsxfun(@minus, X, mu);
@@ -8,3 +8,4 @@ sigma = std(X_norm);
 
 X_norm = bsxfun(@rdivide, X_norm, sigma);
 end
+
