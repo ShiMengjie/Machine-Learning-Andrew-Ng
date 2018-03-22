@@ -1,11 +1,15 @@
-%% %% Machine Learning Online Class 
-% Exercise-6:Spam emails
+%% %% Machine Learning Online Class --- Exercise-6:Spam emails
 close all;clc
-addpath(genpath('./kernel'));%æ·»åŠ æ ¸å‡½æ•°è·¯å¾„
+% Ìí¼Óº¯ÊıÂ·¾¶
+addpath(genpath('./kernel'));
 addpath(genpath('./txt'));
-%% æ–‡æœ¬é¢„å¤„ç†å’Œæå–ç‰¹å¾
-file_contents = readFile('emailSample1.txt'); % è¯»å–ä¸€å°é‚®ä»¶çš„å†…å®¹
-word_indices = processEmail(file_contents);   % æŠŠé‚®ä»¶å†…å®¹è½¬æ¢æˆæ–‡å­—ç‰¹å¾æ ‡è®°
+addpath(genpath('./methods'));
+
+%% 1.ÎÄ±¾Ô¤´¦ÀíºÍÌáÈ¡ÌØÕ÷
+% ¶ÁÈ¡Ñù±¾ÓÊ¼şµÄÄÚÈİ
+file_contents = readFile('emailSample1.txt'); 
+% °ÑÓÊ¼şÄÚÈİ×ª»»³ÉÎÄ×ÖÌØÕ÷±ê¼Ç
+word_indices = processEmail(file_contents);   
 
 fprintf('Word Indices: \n');
 fprintf(' %d', word_indices);
@@ -15,19 +19,19 @@ feature = emailFeatures(word_indices);
 fprintf('Length of feature vector: %d\n', length(feature));
 fprintf('Number of non-zero entries: %d\n', sum(feature > 0));
 
-%% å¯¼å…¥æ•°æ®ã€è®­ç»ƒSVMæ¨¡å‹å’Œæµ‹è¯•æ¨¡å‹
-% å¯¼å…¥è®­ç»ƒé›†
+%% 2.µ¼ÈëÊı¾İ¡¢ÑµÁ·SVMÄ£ĞÍºÍ²âÊÔÄ£???
+% µ¼ÈëÑµÁ·¼¯
 load('spamTrain.mat');
 C=0.1;
-%model = svmTrain(X,y,C,@linearKernel);
+model = svmTrain(X,y,C,@linearKernel);
 p = svmPredict(model, X);
 fprintf('Training Accuracy: %f\n', mean(double(p == y)) * 100);
-% å¯¼å…¥æµ‹è¯•é›†
+% µ¼Èë²âÊÔ¼¯
 load('spamTest.mat');
 p = svmPredict(model, Xtest);
 fprintf('Test Accuracy: %f\n', mean(double(p == ytest)) * 100);
 
-%% å¯¹wè¿›è¡Œé™åºæ’åˆ—ï¼Œæ˜¾ç¤ºå‰15ä¸ªæƒé‡æœ€é«˜çš„å•è¯
+%% 3.¶Ôw½øĞĞ½µĞòÅÅÁĞ£¬ÏÔÊ¾Ç°15¸öÈ¨ÖØ×î¸ßµÄµ¥´Ê
 [weight, idx] = sort(model.w, 'descend');
 vocabList = getVocabList();
 
@@ -36,12 +40,11 @@ for i = 1:15
     fprintf(' %-15s (%f) \n', vocabList{idx(i)}, weight(i));
 end
 
-%% å¯¹é‚®ä»¶è¿›è¡Œçš„é¢„æµ‹åˆ†ç±»
+%% 4.¶ÔÓÊ¼ş½øĞĞµÄÔ¤²â·ÖÀà
 filename = 'spamSample1.txt';
-
 file_contents = readFile(filename);
 word_indices  = processEmail(file_contents);
-x             = emailFeatures(word_indices).';
+x = emailFeatures(word_indices).';
 p = svmPredict(model, x);
 
 fprintf('\nProcessed %s\n\nSpam Classification: %d\n', filename, p);

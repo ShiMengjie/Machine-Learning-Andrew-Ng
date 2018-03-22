@@ -1,5 +1,5 @@
 function x = emailFeatures(word_indices)
-%% 鎶婁竴涓枃瀛楁爣璁拌〃锛岃浆鎹㈡垚鐗瑰緛
+%% 函数功能：把一个文字标记表，转换成特征向量，把有值的位置改为1
 n = 1899;
 x = zeros(n, 1);
 

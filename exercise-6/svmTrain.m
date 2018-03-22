@@ -1,15 +1,14 @@
 function [model] = svmTrain(X, Y, C, func, ...
                             tol, maxIter)
-%% ä½¿ç”¨SMOçš„ç®€åŒ–ç‰ˆè¿›è¡ŒSVMè®­ç»ƒ
-% å…³äºSMOçš„å…¬å¼æ¨å¯¼è¿‡ç¨‹ï¼Œè§ä»¥ä¸‹åšå®¢ï¼š
+%% º¯Êı¹¦ÄÜ£ºÊ¹ÓÃSMOµÄ¼ò»¯°æ½øĞĞSVMÑµÁ·
+% ¹ØÓÚSMOµÄ¹«Ê½ÍÆµ¼¹ı³Ì£¬¼ûÒÔÏÂ²©¿ÍºÍÂÛÎÄ£º
 % http://blog.csdn.net/v_july_v/article/details/7624837
-% æˆ–è®ºæ–‡ï¼š
 % Sequential Minimal Optimization: A Fast Algorithm for Training Support Vector Machines
-% X æ˜¯æ•°æ®çŸ©é˜µï¼ŒX(i,j)è¡¨ç¤ºdiä¸ªæ ·æœ¬çš„ç¬¬jç»´ç‰¹å¾
-% Y æ˜¯Xå¯¹åº”çš„åˆ—å‘é‡labelï¼Œæ­¤æ—¶y={0,1}
-% C æ˜¯SVMçš„æ­£åˆ™åŒ–å‚æ•°
-% tol å‚æ•°æ»¡è¶³KKTæ¡ä»¶çš„è¯¯å·®
-% maxIter æœ€å¤§è¿­ä»£è¿ç®—æ¬¡æ•°
+% X ÊÇÊı¾İ¾ØÕó£¬X(i,j)±íÊ¾µÚi¸öÑù±¾µÄµÚjÎ¬ÌØÕ÷
+% Y ÊÇX¶ÔÓ¦µÄÁĞÏòÁ¿label£¬ÊäÈëÊ±y={0,1}
+% C ÊÇSVMµÄÕıÔò»¯²ÎÊı
+% tol ²ÎÊıÂú×ãKKTÌõ¼şµÄÎó²î
+% maxIter ×î´óµü´úÔËËã´ÎÊı
 if ~exist('tol', 'var') || isempty(tol)
     tol = 1e-3;
 end
@@ -17,40 +16,40 @@ if ~exist('max_passes', 'var') || isempty(maxIter)
     maxIter = 5;
 end
 
-%% å‡†å¤‡æ•°æ®å’Œå‚æ•°
+%% ×¼±¸Êı¾İºÍ²ÎÊı
 m = size(X, 1);
-% åœ¨SVMä¸­ï¼Œlabelåªæœ‰{-1,+1}ä¸¤ç§ï¼Œæ‰€ä»¥è¦æŠŠ0å€¼æ”¹æˆ-1
+% ÔÚSVMÖĞ£¬labelÖ»ÓĞ{-1,+1}Á½ÖÖ£¬ËùÒÔÒª°Ñ0Öµ¸Ä³É-1
 Y(Y==0) = -1;
-% åœ¨ï¼ˆå¯¹å¶ï¼‰ä¼˜åŒ–é—®é¢˜ä¸­éœ€è¦ç”¨åˆ°çš„å‚æ•°
-alphas = zeros(m, 1); % æ‹‰æ ¼æœ—æ—¥ä¹˜å­
-b = 0; % åç½®
-passes = 0; % è¿­ä»£æ¬¡æ•°
-E = zeros(m, 1); % è¯¯å·®çŸ©é˜µï¼ŒE(i)è¡¨ç¤ºç¬¬iä¸ªå‘é‡ä½œä¸ºæµ‹è¯•/è®­ç»ƒæ•°æ®æ—¶çš„è¯¯å·®
-%% ç”Ÿæˆæ ¸å‡½æ•°çŸ©é˜µ
+% ÔÚ£¨¶ÔÅ¼£©ÓÅ»¯ÎÊÌâÖĞĞèÒªÓÃµ½µÄ²ÎÊı
+alphas = zeros(m, 1); % À­¸ñÀÊÈÕ³Ë×Ó
+b = 0; % Æ«ÖÃ
+passes = 0; % µü´ú´ÎÊı
+E = zeros(m, 1); % Îó²î¾ØÕó£¬E(i)±íÊ¾µÚi¸öÏòÁ¿×÷Îª²âÊÔ/ÑµÁ·Êı¾İÊ±µÄÎó²î
+
+%% Éú³ÉºËº¯Êı¾ØÕó
 K = func(X,X);
 
-%% å¼€å§‹è®­ç»ƒå‚æ•°
+%% ¿ªÊ¼ÑµÁ·²ÎÊı
 while passes < maxIter
-    
     num_changed_alphas = 0;
     for i = 1:m
-        % E(i)æ˜¯å¸¦å…¥X(i,:)ï¼Œå¾—åˆ°çš„é¢„æµ‹ä¸çœŸå€¼çš„å·®ï¼ŒE=((wT * X) + b) - y
+        % E(i)ÊÇ´øÈëX(i,:)£¬µÃµ½µÄÔ¤²âÓëÕæÖµµÄ²î£¬E=((wT * X) + b) - y
         E(i) = b + sum (alphas .* Y .* K(:,i)) - Y(i);
         % Y(i)*E(i) = y((wT * X) + b) - 1
-        % åœ¨ä¸æ»¡è¶³KKTæ¡ä»¶çš„ä¹˜å­ä¸­æ‰¾åˆ°ä¸¤ä¸ªä¹˜å­alpha1å’Œalpha2,
+        % ÔÚ²»Âú×ãKKTÌõ¼şµÄ³Ë×ÓÖĞÕÒµ½Á½¸ö³Ë×Óalpha1ºÍalpha2,
         if ((Y(i)*E(i) < - tol && alphas(i) < C) || (Y(i)*E(i) > tol && alphas(i) > 0))
-            % é€‰å–alpha2ï¼Œè¦æ±‚ä¸¤ä¸ªalphaä¸åŒ
+            % Ñ¡È¡alpha2£¬ÒªÇóÁ½¸öalpha²»Í¬
             j = ceil(m * rand());
             while j == i
                 j = ceil(m * rand());
             end
             E(j) = b + sum (alphas .* Y .* K(:,j)) - Y(j);
             
-            % ä¿å­˜å½“å‰çš„å€¼ï¼Œåœ¨åé¢è®¡ç®—ä¸­è¦ç”¨åˆ°
+            % ±£´æµ±Ç°µÄÖµ£¬ÔÚºóÃæ¼ÆËãÖĞÒªÓÃµ½
             alpha_i_old = alphas(i);
             alpha_j_old = alphas(j);
             
-            % æ ¹æ®ä¸¤ä¸ªä¹˜å­å¯¹åº”çš„y(i)\y(j)çš„ç¬¦å·æ˜¯å¦ç›¸åŒï¼Œæ¥è®¡ç®—è¾¹ç•ŒLå’ŒH 
+            % ¸ù¾İÁ½¸ö³Ë×Ó¶ÔÓ¦µÄy(i)\y(j)µÄ·ûºÅÊÇ·ñÏàÍ¬£¬À´¼ÆËã±ß½çLºÍH 
             if (Y(i) == Y(j))
                 L = max(0, alphas(j) + alphas(i) - C);
                 H = min(C, alphas(j) + alphas(i));
@@ -58,33 +57,33 @@ while passes < maxIter
                 L = max(0, alphas(j) - alphas(i));
                 H = min(C, C + alphas(j) - alphas(i));
             end
-            % å¦‚æœL=Hï¼Œè¡¨ç¤ºä¸éœ€è¦æ›´æ–°ï¼Œç›´æ¥è¿›å…¥ä¸‹ä¸€è½®
+            % Èç¹ûL=H£¬±íÊ¾²»ĞèÒª¸üĞÂ£¬Ö±½Ó½øÈëÏÂÒ»ÂÖ
             if (L == H) 
                 continue;
             end
 
-            % eta = K(i,i)+K(j,j)-2*K(i,j)ï¼Œè¦æ±‚å€¼å¤§äº0æ‰èƒ½ç»§ç»­è®¡ç®—ï¼Œå¦åˆ™é€€å‡º
+            % eta = K(i,i)+K(j,j)-2*K(i,j)£¬ÒªÇóÖµ´óÓÚ0²ÅÄÜ¼ÌĞø¼ÆËã£¬·ñÔòÍË³ö
             eta = 2 * K(i,j) - K(i,i) - K(j,j);
             if (eta >= 0)
                 continue;
             end
             
-            % æ›´æ–°alpha2çš„å€¼,è€ƒè™‘Lå’ŒHçš„çº¦æŸ
+            % ¸üĞÂalpha2µÄÖµ,¿¼ÂÇLºÍHµÄÔ¼Êø
             alphas(j) = alphas(j) - (Y(j) * (E(i) - E(j))) / eta;
             alphas(j) = min (H, alphas(j));
             alphas(j) = max (L, alphas(j));
  
-            % æ›´æ–°alpha1çš„å€¼
+            % ¸üĞÂalpha1µÄÖµ
             alphas(i) = alphas(i) + Y(i)*Y(j)*(alpha_j_old - alphas(j));
             
-            % è®¡ç®—b1å’Œb2
+            % ¼ÆËãb1ºÍb2
             b1 = b - E(i) ...
                  - Y(i) * (alphas(i) - alpha_i_old) *  K(i,i)' ...
                  - Y(j) * (alphas(j) - alpha_j_old) *  K(i,j)';
             b2 = b - E(j) ...
                  - Y(i) * (alphas(i) - alpha_i_old) *  K(i,j)' ...
                  - Y(j) * (alphas(j) - alpha_j_old) *  K(j,j)';
-            % è®¡ç®—b 
+            % ¼ÆËãb 
             if (0 < alphas(i) && alphas(i) < C)
                 b = b1;
             elseif (0 < alphas(j) && alphas(j) < C)
@@ -104,8 +103,8 @@ while passes < maxIter
     end
 end
 
-%% ä¿å­˜è¾“å‡ºæ¨¡å‹
-% ä»…ä»…ä¿å­˜æ”¯æŒå‘é‡å¯¹åº”çš„alphas
+%% ±£´æÊä³öÄ£ĞÍ
+% ½ö½ö±£´æÖ§³ÖÏòÁ¿¶ÔÓ¦µÄalphas
 idx = alphas > 0;
 model.X= X(idx,:);
 model.y= Y(idx);

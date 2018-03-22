@@ -1,9 +1,8 @@
 function K = gaussianKernel(x1, x2,sigma)
-%% é«˜æ–¯æ ¸å‡½æ•°
-
+%% º¯Êı¹¦ÄÜ£º¸ßË¹ºËº¯Êı
 X1 = sum(x1.^2,2);
 X2 = sum(x2.^2,2);
-% ä¸‹é¢è¿™ä¸€å¥å¿…é¡»è¿™ä¹ˆå†™ %
+% ÏÂÃæÕâÒ»¾ä±ØĞëÕâÃ´Ğ´ %
 sim = bsxfun(@plus,X1,bsxfun(@plus,X2.', - 2 * (x1 * x2.')));
 K = exp(-1/(2*sigma*sigma)) .^ sim;
  

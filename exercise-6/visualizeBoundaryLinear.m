@@ -1,5 +1,5 @@
 function visualizeBoundaryLinear(X, model)
-%% 缁樺埗SVM璁粌鍑烘潵鐨勭嚎鎬у垎鐣岀嚎
+%% 函数功能：绘制SVM训练出来的线性分界线
 w = model.w;
 b = model.b;
 xp = linspace(min(X(:,1)), max(X(:,1)), 100);

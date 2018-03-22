@@ -1,9 +1,9 @@
-%% Machine Learning Online Class 
-% Exercise 6---Support Vector Machine
+%% Machine Learning Online Class--Exercise 6£ºÖ§³ÖÏòÁ¿»ùSVM
 close all;clc
-addpath(genpath('./kernel'));%æ·»åŠ æ ¸å‡½æ•°è·¯å¾„
+addpath(genpath('./kernel'));%Ìí¼ÓºËº¯ÊıÂ·¾¶
 addpath(genpath('./txt'));
-%% 1.è½½å…¥æ•°æ®1ï¼Œç»˜åˆ¶æ ·æœ¬æ•°æ®
+
+%% 1.ÔØÈëÊı¾İ1£¬»æÖÆÑù±¾Êı¾İ
 fprintf('Loading and visualizing data ....\n');
 load('ex6data1.mat');
 figure(1);
@@ -12,11 +12,11 @@ xlabel('Feature 1');
 ylabel('Feature 2');
 title('ex6data1','FontWeight','bold');
 
-%% 2.è®­ç»ƒSVM--çº¿æ€§å¯åˆ†çš„data1
+%% 2.ÑµÁ·SVM--ÏßĞÔ¿É·ÖµÄdata1
 C=1;
 maxIter=20;
 model_1 = svmTrain(X,y,C,@linearKernel,1e-3,maxIter);
-visualizeBoundaryLinear(X, model);
+visualizeBoundaryLinear(X, model_1);
 hold on;
 C =100;
 model_2 = svmTrain(X,y,C,@linearKernel,1e-3,maxIter);
@@ -24,7 +24,7 @@ visualizeBoundaryLinear(X, model_2);
 legend({'label=1','label=-1','C=1','C=100'},'FontWeight','bold');
 hold off
 
-%% 3.å®ç°é«˜æ–¯æ ¸
+%% 3.ÊµÏÖ¸ßË¹ºË
 fprintf('\nEvaluating the Gaussian Kernel ...\n');
 x1 = [1 2 1]; x2 = [0 4 -1]; sigma = 2;
 sim = gaussianKernel(x1, x2, sigma);
@@ -32,19 +32,19 @@ sim = gaussianKernel(x1, x2, sigma);
 fprintf(['Gaussian Kernel between x1 = [1; 2; 1], x2 = [0; 4; -1], sigma = 2 :' ...
          '\n\t%f\n(this value should be about 0.324652)\n'], sim);
 
-%% 4.è½½å…¥å¹¶å¯è§†åŒ–æ•°æ®2
+%% 4.ÔØÈë²¢¿ÉÊÓ»¯Êı¾İ2
 load('ex6data2.mat');
 figure(2);
-plotData(X,y);%Xå’Œyå˜æˆdata2ä¸­çš„å…ƒç´ äº†
+plotData(X,y);  %XºÍy±ä³Édata2ÖĞµÄÔªËØÁË
 xlabel('Feature 1');
 ylabel('Feature 2');
 title('ex6data2','FontWeight','bold');
 hold on
 
-%% 5.æ•°æ®2è®­ç»ƒSVM--ä½¿ç”¨é«˜æ–¯æ ¸
+%% 5.Êı¾İ2ÑµÁ·SVM--Ê¹ÓÃ¸ßË¹ºË
 C1=1;
 sigma =0.1;
-modelg1 = svmTrain(X,y,C1,@(x1,x2) gaussianKernel(x1,x2,sigma),1e-3);%æ²¡æœ‰è®¾ç½®è¿­ä»£æ¬¡æ•°ï¼Œæ‰€ä»¥æ˜¯é»˜è®¤çš„5æ¬¡
+modelg1 = svmTrain(X,y,C1,@(x1,x2) gaussianKernel(x1,x2,sigma),1e-3);   %Ã»ÓĞÉèÖÃµü´ú´ÎÊı£¬ËùÒÔÊÇÄ¬ÈÏµÄ5´Î
 [xplot,yplot,vals]=visualizeBoundary(X, modelg1);
 contour(xplot,yplot,vals,[0 1],'b-','LineWidth',2);
 hold on
@@ -57,16 +57,16 @@ contour(xplot,yplot,vals,[0 1],'r-','LineWidth',2);
 legend({'label=1','label=-1','C=1','C=100'},'FontWeight','bold');
 hold off
 
-%% 6.è½½å…¥å¹¶å¯è§†åŒ–æ•°æ®3
+%% 6.ÔØÈë²¢¿ÉÊÓ»¯Êı¾İ3
 load('ex6data3.mat');
 figure(3);
-plotData(X,y);%Xå’Œyå˜æˆdata2ä¸­çš„å…ƒç´ äº†
+plotData(X,y);  %XºÍy±ä³Édata2ÖĞµÄÔªËØÁË
 xlabel('Feature 1');
 ylabel('Feature 2');
 title('ex6data3','FontWeight','bold');
 hold on
 
-%% 7.å¯»æ‰¾ä»¤éªŒè¯é›†å‡†ç¡®ç‡æœ€é«˜çš„Cå’Œsigma
+%% 7.Ñ°ÕÒÁîÑéÖ¤¼¯×¼È·ÂÊ×î¸ßµÄCºÍsigma
 Cs=[0.01; 0.03; 0.1; 0.3; 1; 3; 10; 30];
 sigmas=[0.01; 0.03; 0.1; 0.3; 1; 3; 10; 30];
 [C,simga] = dataset3Params(X,y,Xval,yval,Cs,sigmas);
@@ -74,4 +74,3 @@ model = svmTrain(X,y,C,@(x1,x2) gaussianKernel(x1,x2,sigma));
 [xplot,yplot,vals]=visualizeBoundary(X, model);
 contour(xplot,yplot,vals,[0 1],'b-','LineWidth',2);
 legend({'label=1','label=-1','boundary'},'FontWeight','bold');
-%}

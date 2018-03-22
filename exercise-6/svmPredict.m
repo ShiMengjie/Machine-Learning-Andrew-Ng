@@ -1,5 +1,5 @@
 function pred = svmPredict(model,Xtest)
-%% é¢„æµ‹SVMåœ¨æµ‹è¯•æ•°æ®ä¸Šçš„è¾“å‡º
+%% º¯Êı¹¦ÄÜ£ºÔ¤²âSVMÔÚ²âÊÔÊı¾İÉÏµÄÊä³ö
 [m,~] = size(Xtest);
 pred = zeros(m, 1);
 
