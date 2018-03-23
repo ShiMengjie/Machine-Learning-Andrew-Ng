@@ -1,6 +1,6 @@
-%% Machine Learning  Online Class === Exercise 7 |K-Means Clustering and Principle Component Analysis 
-% Principal Components Analysis
+%% Machine Learning  Online Class === Exercise 7:K-Means Clustering and Principle Component Analysis 
 close all;clc
+
 %% Optional (ungraded) Exercise: PCA for Visualization--1
 A = double(imread('lena.png'));
 A = A / 255;

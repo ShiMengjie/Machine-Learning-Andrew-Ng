@@ -1,9 +1,10 @@
-function [X_norm, mu, sigma] = featureNormalize(X)
-%% 对数据进行标准化，并返回
-% 这种写法，是Mattlab标准写法
+function [X_norm,mu,sigma] = featureNormalize(X)
+%% 函数功能：把特征标准化，下面是标准化的标准流程
 mu = mean(X);
-X_norm = bsxfun(@minus, X, mu);
-sigma = std(X_norm); % 得到标准差
-X_norm = bsxfun(@rdivide, X_norm, sigma);
 
+X_norm = bsxfun(@minus, X, mu);
+
+sigma = std(X_norm);
+
+X_norm = bsxfun(@rdivide, X_norm, sigma);
 end

@@ -1,5 +1,5 @@
 function plotDataPoints(X, idx, K)
-%% 绘制数据点
+%% 函数功能：绘制数据点
 % 生成K+1种颜色的色彩
 palette = hsv(K);
 % 根据idx取出每个样本对应的颜色

@@ -1,6 +1,6 @@
 function [U,S] = pca(X)
-%% 使用SVD进行PCA分解
+%% 函数功能：使用SVD进行PCA分解
 Sigma = X.' * X / (size(X,1));
-[U, S, ~]=svd(Sigma);
+[U, S, ~] = svd(Sigma);
 
 end
