@@ -1,4 +1,4 @@
-# Coursera Machine Learning Assignments in Matlab
+## Coursera Machine Learning Assignments in Matlab
 [![Author](https://img.shields.io/badge/author-SHIMengjie-red.svg)](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab) 
 [![Matlab](https://img.shields.io/badge/Matlab-2017b-green.svg)]() 
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)]() 
@@ -28,7 +28,6 @@ T and some performance measure P, if its performance on T, as measured by P, imp
 
 ### Target
 ---
-这一项目的主要目的有以下两个内容：
 * 掌握机器学习的算法原理与推理过程；
 * 掌握机器学习算法在Matlab语言的实现过程和细节；
 
@@ -61,6 +60,5 @@ T and some performance measure P, if its performance on T, as measured by P, imp
 * Simple Gaussian Process Regression
 
 ## Acknowledge
-<b>LIKE KINDA SUPER IMPORTANT NOTE</b>:
 
-你可以检查与修改我在[github](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab)上的代码仓库，欢迎任何改进和讨论。
+<b>你可以检查与修改我在[github](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Matlab)上的代码仓库，欢迎任何改进和讨论。</b>
