@@ -1,6 +1,6 @@
 function [J,grad] = cofiCostFunc(params, Y, R, num_users, num_movies, ...
                                   num_features, lambda)
-%% 计算代价函数和梯度
+%% 函数功能：计算代价函数和梯度
 
 X = reshape(params(1:num_movies*num_features), num_movies, num_features);
 

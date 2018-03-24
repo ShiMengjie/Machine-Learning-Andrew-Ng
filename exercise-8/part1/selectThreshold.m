@@ -1,6 +1,6 @@
 function [bestEpsilon,bestF1] = selectThreshold(yval, pval)
-%% 使用验证集，根据F1-score选择合适的门限epsilon
-% 计算门限增加的步长
+%% 函数功能：使用验证集，根据F1-score选择合适的门限epsilon
+% 找到令F1-score最大的门限
 step = (max(pval) - min(pval)) / 1000;
 bestF1 = 0;
 for epsilon = min(pval):step:max(pval)

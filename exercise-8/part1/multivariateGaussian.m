@@ -1,5 +1,5 @@
 function p = multivariateGaussian(X, mu, sigma2)
-%% 计算每个样本在多维高斯分布中的概率值
+%% 函数功能：计算每个样本在多维高斯分布中的概率值
 % 生成方差矩阵
 if (size(sigma2, 2) == 1) || (size(sigma2, 1) == 1)
     sigma2 = diag(sigma2);

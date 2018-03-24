@@ -1,8 +1,7 @@
-%% Machine Learning Online Class
-%  Exercise 8 | Anomaly Detection and Collaborative Filtering
+%% Machine Learning Online Class --- Exercise 8 | Anomaly Detection and Collaborative Filtering
 close all;clc
+% 使用协同滤波，来进行电影推荐
 %% 1.载入数据
-fprintf('Loading movie ratings dataset.\n\n');
 load ('ex8_movies.mat');
 fprintf('Average rating for movie 1 (Toy Story): %f / 5\n\n', ...
         mean(Y(1,R(1,:))));
