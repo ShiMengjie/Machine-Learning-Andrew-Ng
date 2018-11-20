@@ -13,7 +13,6 @@
 ### Attention：
 ---
 * 你可以在[百度云](https://pan.baidu.com/s/1qZlQFoS)上下载全套课程视频和相关文档；
-* 如果需要课程代码在python语言的实现，可以参考我在[github](https://github.com/SHIMengjie/Machine-Learning-Andrew-Ng-Python)上的另一个代码仓库。
 
 ### Definition
 ---
